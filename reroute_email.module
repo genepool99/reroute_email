@@ -37,6 +37,10 @@ function reroute_email_settings() {
 function reroute_email_mail_alter(&$mailkey, &$to, &$subject, &$body, &$from, &$headers) {
   global $base_url;
 
+  // Suppress Bcc and Cc fields otherwise email will still go out to those addresses
+  unset($headers['Bcc']);
+  unset($headers['Cc']);
+
   // Format a message to show at the top
   $msg  = "This email was rerouted.\n";
   $msg .= "Web site: @site\n";
