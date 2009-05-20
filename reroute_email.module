@@ -42,6 +42,11 @@ function reroute_email_settings() {
 function reroute_email_mail_alter(&$message) {
   global $base_url;
 
+  if (!variable_get(REROUTE_EMAIL_ADDRESS, '')) {
+    // If email address not in settings, then do nothing.
+    return;
+  }
+
   if (empty($message)) {
     return;
   }
