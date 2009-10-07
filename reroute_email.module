@@ -29,7 +29,6 @@ function reroute_email_settings() {
   $form[REROUTE_EMAIL_ADDRESS] = array(
     '#type'          => 'textarea',
     '#title'         => t('Email addresses'),
-    '#required'      => TRUE,
     '#default_value' => variable_get(REROUTE_EMAIL_ADDRESS, ini_get('sendmail_from')),
     '#cols'          => 35,
     '#rows'          => 5,
