@@ -90,7 +90,7 @@ function reroute_email_mail_alter(&$message) {
       $msg[] = t("This email was rerouted.");
       $msg[] = t("Web site: @site", array('@site' => $base_url));
       $msg[] = t("Mail key: @key", array('@key' => $mailkey));
-      $msg[] = t("Originally to: <@to>", array('@to' => $to));
+      $msg[] = t("Originally to: @to", array('@to' => $to));
       $msg[] = "-----------------------";
 
       // Prepend to the body of the email
