@@ -1,6 +1,5 @@
 <?php
 
-// $Id$
 
 define('REROUTE_EMAIL_ADDRESS', 'reroute_email_address');
 define('REROUTE_EMAIL_ENABLE',  'reroute_email_enable');
