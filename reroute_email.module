@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * @file reroute_email.module
+ */
 
 define('REROUTE_EMAIL_ADDRESS', 'reroute_email_address');
 define('REROUTE_EMAIL_ENABLE_MESSAGE', 'reroute_email_enable_message');
@@ -17,8 +19,8 @@ function reroute_email_menu() {
   $items = array();
 
   $items['admin/settings/reroute_email'] = array(
-    'title'              => t('Reroute Email'),
-    'description'        => t('Reroute emails to a test address.'),
+    'title'              => 'Reroute Email',
+    'description'        => 'Reroute emails to a test address.',
     'page callback'      => 'drupal_get_form',
     'page arguments'     => array('reroute_email_settings'),
     'access arguments'   => array('administer reroute email'),
