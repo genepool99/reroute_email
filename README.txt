@@ -45,8 +45,8 @@ the values:
  * To override specific variables and ensure that email rerouting is enabled or
  * disabled, change the values below accordingly for your site.
  */
-  // The email address to reroute all emails from the site to.
-  $conf['reroute_email_address'] = "example@example.com";
+// The email address to reroute all emails from the site to.
+$conf['reroute_email_address'] = "example@example.com";
 
 
 Bugs/Features/Patches:
