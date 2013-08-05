@@ -37,7 +37,7 @@ function reroute_email_settings() {
 function reroute_email_settings_validate($form, $form_state) {
   if ($form_state['values']['reroute_email_enable'] == TRUE) {
     // Allow splitting emails by space, comma, semicolon.
-    $addresslist = preg_split(EMAIL_SPLIT_RE, $form_state['values']['reroute_email_address'], -1, PREG_SPLIT_NO_EMPTY);
+    $addresslist = preg_split(REROUTE_EMAIL_EMAIL_SPLIT_RE, $form_state['values']['reroute_email_address'], -1, PREG_SPLIT_NO_EMPTY);
     foreach ($addresslist as $address) {
       if (!valid_email_address($address)) {
         form_set_error('reroute_email_address', t('@address is not a valid email address', array('@address' => $address)));
@@ -53,21 +53,19 @@ function reroute_email_test_email_form() {
   return array(
     'addresses' => array(
       '#type' => 'fieldset',
+      '#description' => t('Email addresses are not validated: any valid or invalid email address format could be submitted.'),
       'to' => array(
         '#type' => 'textfield',
         '#title' => t('To'),
         '#required' => TRUE,
-        '#element_validate' => array('reroute_email_test_email_field_validate'),
       ),
       'cc' => array(
         '#type' => 'textfield',
         '#title' => t('Cc'),
-        '#element_validate' => array('reroute_email_test_email_field_validate'),
       ),
       'bcc' => array(
         '#type' => 'textfield',
         '#title' => t('Bcc'),
-        '#element_validate' => array('reroute_email_test_email_field_validate'),
       ),
     ),
     'subject' => array(
@@ -96,14 +94,5 @@ function reroute_email_test_email_form_submit(&$form, &$form_state) {
   $message = drupal_mail('reroute_email', 'test_email_form', $to, language_default(), $params);
   if (!empty($message['result'])) {
     drupal_set_message(t("Test email submitted for delivery."));
-  }
-}
-
-/**
- * Email fields validation callback for email address format.
- */
-function reroute_email_test_email_field_validate($element, &$form_state, $form) {
-  if (!empty($element['#value']) && !valid_email_address($element['#value'])) {
-    form_error($element, t('Please submit a valid email address for the field @field_label.', array('@field_label' => $element['#title'])));
   }
 }
