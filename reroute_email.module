@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Reroute Email module
+ * Intercepts all outgoing emails to be rerouted to a configurable destination.
  */
 
 define('REROUTE_EMAIL_ADDRESS', 'reroute_email_address');
