@@ -9,7 +9,7 @@
  * Implements hook_uninstall().
  */
 function reroute_email_uninstall() {
-  variable_del('reroute_email_address');
-  variable_del('reroute_email_enable');
-  variable_del('reroute_email_enable_message');
+  \Drupal::config('reroute_email.settings')->clear('reroute_email_address')->save();
+  \Drupal::config('reroute_email.settings')->clear('reroute_email_enable')->save();
+  \Drupal::config('reroute_email.settings')->clear('reroute_email_enable_message')->save();
 }

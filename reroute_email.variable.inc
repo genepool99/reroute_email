@@ -18,12 +18,17 @@ function reroute_email_variable_info() {
     'group' => 'reroute_email',
   );
 
-  $variable[REROUTE_EMAIL_ADDRESS] = array(
-    'title' => t('Email addresses'),
-    'description' => t('Provide a space, comma, or semicolon-delimited list of email addresses to pass through. Every destination email address which is not on this list will be rerouted to the first address on the list.'),
-    'default' => variable_get('site_mail', ini_get('sendmail_from')),
-    'group' => 'reroute_email',
-  );
+  // @FIXME
+// // @FIXME
+// // This looks like another module's variable. You'll need to rewrite this call
+// // to ensure that it uses the correct configuration object.
+// $variable[REROUTE_EMAIL_ADDRESS] = array(
+//     'title' => t('Email addresses'),
+//     'description' => t('Provide a space, comma, or semicolon-delimited list of email addresses to pass through. Every destination email address which is not on this list will be rerouted to the first address on the list.'),
+//     'default' => variable_get('site_mail', ini_get('sendmail_from')),
+//     'group' => 'reroute_email',
+//   );
+
 
   $variable[REROUTE_EMAIL_ENABLE_MESSAGE] = array(
     'title' => t('Show rerouting description in mail body'),
