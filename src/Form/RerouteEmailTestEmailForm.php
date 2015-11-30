@@ -56,12 +56,18 @@ class RerouteEmailTestEmailForm extends FormBase {
   }
 
   public function submitForm(array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+    
+    $from = "devarajjohnson23@gmail.com";
     $to = $form_state->getValue(['to']);
     $param_keys = ['cc', 'bcc', 'subject', 'body'];
     $params = array_intersect_key($form_state->getValues(), array_flip($param_keys));
-    $message = drupal_mail('reroute_email', 'test_email_form', $to, language_default(), $params);
+    $langcode = \Drupal::languageManager()->getDefaultLanguage();
+    
+    // Send email with drupal_mail.
+    $message =  \Drupal::service('plugin.manager.mail')->mail('reroute_email', 'test_email_form', $to, $langcode, $params, $from);
+
     if (!empty($message['result'])) {
-      drupal_set_message(t("Test email submitted for delivery."));
+      drupal_set_message(t("Test email submitted for delivery from test form."));
     }
   }
 
